@@ -1,0 +1,36 @@
+package pl.coderslab.spring_boot_project.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "reviews")
+@Getter
+@Setter
+public class Review {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+//    private User user;
+    @CreationTimestamp
+    private LocalDateTime created;
+    @OneToOne
+    private Image image;
+    @OneToMany (mappedBy = "review")
+    private List<Request> request;
+}
+
+//    table reviews {
+//        id int [pk, increment]
+//        created date
+//        image_id int
+//        content varchar
+//        images_id int  [ref:> images.id]
+//
+//        }
