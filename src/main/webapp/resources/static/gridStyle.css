@@ -1,20 +1,55 @@
+html, body {
+    height: 100%;
+    background-image: url("/resources/images/60.-Zircon_tlo kropki.jpg");
+    background-size: cover;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
 .container {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
-    grid-template-rows: 120px 70pc 10pc;
-    background: #F1F1F1;
+    grid-template-rows: 120px 1fr 40px;
+
 }
 
 #header {
     grid-column: 1/4;
-    background: white;
+
 }
 
 #mainColumn {
     grid-column: 2/3;
-    grid-row: 2/5;
-    background: white;
+    grid-row: 2/3;
     padding: 15px 20px;
+    overflow: scroll;
+    /*border-radius: 12px;*/
+}
+
+/*#mainColumnBckg {*/
+/*    grid-column: 2/3;*/
+/*    grid-row: 2/3;*/
+
+/*    padding: 15px 20px;*/
+/*    overflow: scroll;*/
+/*    background: white;*/
+/*    fill-opacity: 0.3;*/
+/*    !*border-radius: 12px;*!*/
+/*}*/
+
+.sideTasksDiv{
+    grid-column: 1/2;
+    grid-row: 2/4;
+    align-content: center;
 }
 
 #mainColumn-folders {
@@ -22,11 +57,22 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-rows: 200px;
     grid-gap: 30px 30px;
+    /*background: white;*/
+    /*opacity: 0.3;*/
+    border-radius: 12px;
+    /*margin: 20px;*/
+    /*height: 100%;*/
 }
 
 #mainColumn-list {
 
 }
+
+#sideTasksList{
+
+}
+
+
 
 
 .card {
@@ -34,8 +80,10 @@
     height: 280px;
     border-radius: 6px;
     padding: 15px 35px;
+    margin: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
+    background: white;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -46,16 +94,17 @@
 .card-field {
     height: 250px;
     border-radius: 6px;
-    background: #F1F1F1;
     transition: 0.3s;
 }
 
 .folder {
     /* Add shadows to create the "card" effect */
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     align-content: center;
     background: #F1F1F1;
+    opacity: 1;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -64,6 +113,8 @@
 }
 
 .img {
+    margin-left: auto;
+    margin-right: auto;
     display: block;
     width: 100%;
     height: 100%;
@@ -74,7 +125,10 @@
 }
 
 .fullHeightImg {
-    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 100%;
 }
 
 .choose-btn {
@@ -118,5 +172,52 @@
     background-color: #fff;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
 }
+.request-field-inactive{
 
+    width: 95%;
+    height: 30px;
+    margin-bottom: 8px;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #C8CBCE;
+    vertical-align: middle;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.taskStatus {
+
+    margin-left: auto;
+    margin-right: auto;
+    horiz-align: center;
+    list-style-type: none;
+    height: 34px;
+    margin-bottom: 7px;
+    padding: 5px;
+    font-size: 14px;
+    border-bottom: #8d9499;
+    border-radius: 17px;
+    outline: none;
+    background: #FAFAFA;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    border: 1px solid #f5f5f5;
+    vertical-align: middle;
+    /* make the list items unselectable */
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+}
 

@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -12,7 +13,8 @@
 <head>
     <title>Dodaj recenzje</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="<c:url value="/resources/static/gridStyle.css"/>" rel="stylesheet">
+    <link href="<c:url value="/resources/static/style.css"/>" rel="stylesheet">
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/review.js" />" type="text/javascript"></script>
 
 </head>
@@ -29,16 +31,17 @@
 
     <div id="myDIV">
         <input type="text" id="requestInput" placeholder="Dodaj zadanie..." class="request-field">
-        <button onclick="newElement()" class="request-field-btn" id="addNewRequestBtn"> +</button>
+        <button class="request-field-btn" id="addNewRequestBtn"> +</button>
     </div>
 
-<%--    <ul id="requestList">--%>
-<%--        <li></li>--%>
-<%--    </ul>--%>
-    <form if="formList">
-        <input>
+    <%--    <ul id="requestList">--%>
+    <%--        <li></li>--%>
+    <%--    </ul>--%>
+    <form:form id="formList">
 
-    </form>
+        <input type="submit" value="wyslij">
+
+    </form:form>
 
 </div>
 

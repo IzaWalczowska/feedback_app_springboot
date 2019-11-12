@@ -10,8 +10,8 @@
 <html>
 <head>
     <title>Zadania</title>
-    <link href="<c:url value="../../style.css" />" rel="stylesheet">
-    <script src="<c:url value="../../uploadFile.js" />" type="text/javascript"></script>
+    <link href="<c:url value="/resources/static/style.css" />" rel="stylesheet">
+    <script src="<c:url value="/resources/js/uploadFile.js" />" type="text/javascript"></script>
 </head>
 <body>
 
@@ -19,7 +19,7 @@
     <img id="preview" src=""  alt="your image" class="img" >
 </container>
 
-<form method="post" enctype="multipart/form-data" class="form-upload" action="projekt/${projectId}/zadanie/${taskId}/uploadImage">
+<form method="post" enctype="multipart/form-data" class="form-upload" onsubmit="return closeSelf()">
     <label class="choose-btn">przeglądaj
         <input name="uploadFile" id="fileInput" type="file" accept="image/jpeg, image/png" onchange="previewFile()">
     </label>

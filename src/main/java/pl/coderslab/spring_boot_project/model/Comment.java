@@ -20,6 +20,8 @@ public class Comment {
     @CreationTimestamp
     private LocalDateTime created;
     private String content;
+    @ManyToOne
+    private Task task;
 //    private Review review;
 
 

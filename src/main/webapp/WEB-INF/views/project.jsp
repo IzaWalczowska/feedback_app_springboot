@@ -39,15 +39,16 @@
                 </form:form>
             </c:when>
             <c:otherwise>
-                <ul>
+
                     <c:forEach items="${tasksList}" var="task">
-                        <li>
-                            <a href="../task/${projectId}/${task.id}/history">
+                        <div class="taskStatus">
+                            <a href="../task/${projectId}/${task.id}">
                                     ${task.name}
                             </a>
-                        </li>
+
+                        </div>
                     </c:forEach>
-                </ul>
+
             </c:otherwise>
         </c:choose>
     </div>

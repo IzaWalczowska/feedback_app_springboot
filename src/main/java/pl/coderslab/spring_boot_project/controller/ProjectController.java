@@ -54,7 +54,6 @@ public class ProjectController {
 
         model.addAttribute("projectId", id);
         List<Task> tasksList = taskService.findByProjectId(id);
-//        List<Task> tasksList = new ArrayList<>();
         model.addAttribute("tasksList", tasksList);
         Task task = new Task();
         model.addAttribute("task", task);

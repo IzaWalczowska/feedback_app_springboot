@@ -12,8 +12,13 @@ import java.util.List;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
 
-    @Query(value = "select * from images where project_id=?1 order by created limit 10", nativeQuery = true)
-    List<Image> findLastTenImages(Long projectId);
+    @Query(value = "select * from images where task_id=?1 order by created limit 10", nativeQuery = true)
+    List<Image> findLastTenImagesInTask(Long taskId);
+
+    @Query(value = "select * from images where task_id=?1 order by created limit 1", nativeQuery = true)
+    List<Image> findLastImageInTask(Long taskId);
+
+
 
 //    @Query(value = "select * from images join tasks on images.task_id = tasks.id where project_id =?1 order by created desc limit 1", nativeQuery = true)
 //    List<Image> findLatestImagesByProjectid(Long id);

@@ -20,10 +20,13 @@ public class Review {
 //    private User user;
     @CreationTimestamp
     private LocalDateTime created;
-    @OneToOne
+    @ManyToOne
     private Image image;
     @OneToMany (mappedBy = "review")
     private List<Request> request;
+    @ManyToOne
+    private Task task;
+    private String content;
 }
 
 //    table reviews {

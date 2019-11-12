@@ -8,6 +8,7 @@ import pl.coderslab.spring_boot_project.model.Image;
 import pl.coderslab.spring_boot_project.model.Review;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -18,15 +19,17 @@ public class DTOService {
     private final ImageService imageService;
     private final ReviewService reviewService;
     private final CommentService commentService;
+    private final RequestService requestService;
 
-    public DTOService(ImageService imageService, ReviewService reviewService, CommentService commentService) {
+    public DTOService(ImageService imageService, ReviewService reviewService, CommentService commentService, RequestService requestService) {
         this.imageService = imageService;
         this.reviewService = reviewService;
         this.commentService = commentService;
+        this.requestService = requestService;
     }
 
-    public List<historyDto> selectImagesAsDto(Long projectId) {
-        List<Image> imageList = imageService.findLastTen(projectId);
+    public List<historyDto> selectImagesAsDto(Long taskId) {
+        List<Image> imageList = imageService.findLastTenImagesInTask(taskId);
         List<historyDto> historyDtoList = new ArrayList<>();
         for (Image image : imageList
         ) {
@@ -39,19 +42,23 @@ public class DTOService {
         return historyDtoList;
     }
 
-    public List<historyDto> selectReviewsAsDto() {
-        List<Review> reviewList = reviewService.findLastTenReviews();
+    public List<historyDto> selectReviewsAsDto(Long taskId) {
+        List<Review> reviewList = reviewService.findLastTenReviewsInTask(taskId);
         List<historyDto> historyDtoList = new ArrayList<>();
         for (Review review : reviewList) {
             historyDto historyDto = new historyDto();
             historyDto.setCreated(review.getCreated().toString());
+            historyDto.setContent(review.getContent());
+            List<String> stringRequests = requestService.createStringRequestList(review.getRequest());
+            historyDto.setRequests(stringRequests);
+            historyDtoList.add(historyDto);
         }
         return historyDtoList;
     }
 
-    public List<historyDto> selectCommentsAsDto() {
+    public List<historyDto> selectCommentsAsDto(Long taskId) {
         List<historyDto> historyDtoList = new ArrayList<>();
-        List<Comment> commentlist = commentService.findLastTenComments();
+        List<Comment> commentlist = commentService.findLastTenComments(taskId);
         for (Comment comment : commentlist) {
             historyDto historyDto = new historyDto();
             historyDto.setCreated(comment.getCreated().toString());
@@ -61,15 +68,16 @@ public class DTOService {
         return historyDtoList;
     }
 
-//    public List<DTO> margeDtoListsSorted(List<DTO> dtoList1, List<DTO> dtoList2, List<DTO> dtoList3) {
-//
-//        List<DTO> newList = ListUtils.union(dtoList1, dtoList2);
-//        newList.addAll(dtoList3);
-//        Collections.sort(newList);
-//
-//        return newList;
-//
-//    }
+    public List<historyDto> latestDtosListSorted(Long taskId) {
+
+        List<historyDto> historyList = selectImagesAsDto(taskId);
+        historyList.addAll(selectReviewsAsDto(taskId));
+        historyList.addAll(selectCommentsAsDto(taskId));
+        Collections.sort(historyList);
+
+        return historyList;
+
+    }
 
 
 }

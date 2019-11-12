@@ -21,9 +21,9 @@
     </div>
 
     <div id="mainColumn">
-        <div id="mainColumn-folders">
 
-            <div>
+        <div id="mainColumn-folders">
+            <div class="folder">
                 <form:form method="post" modelAttribute="project">
                     <label>dodaj zadanie</label>
                     <form:input path="name" placeholder="nazwa"/>

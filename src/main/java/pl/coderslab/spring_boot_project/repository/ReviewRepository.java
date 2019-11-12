@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ReviewRepository  extends JpaRepository<Review, Long> {
 
-    @Query(value = "select * from reviews order by created limit 10", nativeQuery = true)
-    List<Review> findLastTenReviews();
+    @Query(value = "select * from reviews where task_id=?1 order by created limit 10", nativeQuery = true)
+    List<Review> findLastTenReviewsInTask(Long taskId);
 
 }

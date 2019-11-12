@@ -18,3 +18,10 @@
         }
     }
 
+    // todo zamykanie i reload dziala, ale controller nie odbiera danych z posta
+    // function closeSelf(){
+    //     self.close();
+    //     window.opener.location.reload();
+    //     return true;
+    // }
+

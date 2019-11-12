@@ -23,9 +23,12 @@ public class ImageService {
         imageRepository.save(image);
     }
 
-    public List<Image> findLastTen(Long projectId) {
-        return imageRepository.findLastTenImages(projectId);
+    public List<Image> findLastTenImagesInTask(Long taskId) {
+        return imageRepository.findLastTenImagesInTask(taskId);
     }
+
+    public Image findLastImageInTask(Long taskId)
+    {return imageRepository.findLastImageInTask(taskId).get(0);}
 
 //    todo rozwiazac problem wyswietlania okladek projektow
 //    public List<Image> findLatestImageByProjectid(Long id) {

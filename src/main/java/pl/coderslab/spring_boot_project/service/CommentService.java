@@ -17,8 +17,8 @@ public class CommentService {
         this.commentRepository = commentRepository;
     }
 
-    public List<Comment> findLastTenComments() {
-        return commentRepository.findLastTenComments();
+    public List<Comment> findLastTenComments(Long taskId) {
+        return commentRepository.findLastTenCommentsInTask(taskId);
     }
 
     public void save(Comment comment){commentRepository.save(comment);}

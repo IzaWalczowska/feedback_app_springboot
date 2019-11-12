@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Long> {
 
-    @Query(value = "select * from comments order by created limit 10", nativeQuery = true)
-    List<Comment> findLastTenComments();
+    @Query(value = "select * from comments where task_id=?1 order by created limit 10", nativeQuery = true)
+    List<Comment> findLastTenCommentsInTask(Long taskId);
 
 }

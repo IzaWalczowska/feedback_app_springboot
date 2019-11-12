@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "requests")
-//@Getter
-//@Setter
+@Getter
+@Setter
 public class Request {
 
     @Id
@@ -19,7 +19,7 @@ public class Request {
 //    private User user;
     @CreationTimestamp
     private LocalDateTime created;
-    private String content;
+    private String request;
     @ManyToOne
     private Review review;
 

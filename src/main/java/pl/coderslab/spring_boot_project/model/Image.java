@@ -25,7 +25,7 @@ public class Image {
     private Task task;
     @ManyToOne
     private Project project;
-    @OneToOne (mappedBy = "image")
-    private Review review;
+//    @OneToOne (mappedBy = "image")
+//    private Review review;
 
 }
