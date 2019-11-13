@@ -41,7 +41,7 @@
             <c:otherwise>
 
                     <c:forEach items="${tasksList}" var="task">
-                        <div class="taskStatus">
+                        <div class="task-status-btn">
                             <a href="../task/${projectId}/${task.id}">
                                     ${task.name}
                             </a>

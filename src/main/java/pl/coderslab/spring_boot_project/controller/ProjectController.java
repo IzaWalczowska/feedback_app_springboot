@@ -6,9 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.spring_boot_project.model.Project;
+import pl.coderslab.spring_boot_project.model.Request;
 import pl.coderslab.spring_boot_project.model.Task;
 import pl.coderslab.spring_boot_project.service.ImageService;
 import pl.coderslab.spring_boot_project.service.ProjectService;
+import pl.coderslab.spring_boot_project.service.RequestService;
 import pl.coderslab.spring_boot_project.service.TaskService;
 
 import javax.validation.Valid;
@@ -19,12 +21,14 @@ public class ProjectController {
 
     private ProjectService projectService;
     private TaskService taskService;
+    private final RequestService requestService;
     private final ImageService imageService;
 
     @Autowired
-    public ProjectController(ProjectService projectService, TaskService taskService, ImageService imageService) {
+    public ProjectController(ProjectService projectService, TaskService taskService, RequestService requestService, ImageService imageService) {
         this.projectService = projectService;
         this.taskService = taskService;
+        this.requestService = requestService;
         this.imageService = imageService;
     }
 
@@ -54,6 +58,14 @@ public class ProjectController {
 
         model.addAttribute("projectId", id);
         List<Task> tasksList = taskService.findByProjectId(id);
+
+        // TODO: to be tesed
+//        for (Task task:tasksList) {
+//            Long taskId = task.getId();
+//            List<Request> requestsList = requestService.findAllRequestsInTask(taskId);
+//            String attribiteName = taskId.toString();
+//            model.addAttribute(attribiteName, requestsList);
+//        }
         model.addAttribute("tasksList", tasksList);
         Task task = new Task();
         model.addAttribute("task", task);

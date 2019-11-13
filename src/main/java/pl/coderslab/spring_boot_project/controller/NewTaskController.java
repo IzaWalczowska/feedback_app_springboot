@@ -48,12 +48,21 @@ public class NewTaskController {
         List<Task> tasksList = taskService.findByProjectId(projectId);
         model.addAttribute("tasksList", tasksList);
 
-//        List<historyDto> historyList = dtoService.selectImagesAsDto(taskId);
-//        historyList.addAll(dtoService.selectReviewsAsDto(taskId));
-//        historyList.addAll(dtoService.selectCommentsAsDto(taskId));
-//        Collections.sort(historyList);
         List<historyDto> historyList = dtoService.latestDtosListSorted(taskId);
         model.addAttribute("historyList", historyList);
+
+//        List<Request> requestsList = requestService.findAllRequestsInTask(taskId);
+//        model.addAttribute("requestsList", requestsList);
+//
+//        Request oneRequest = new Request();
+//        model.addAttribute("oneRequest", oneRequest);
+
+        List<Request> checkedRequestsList = requestService.selectAllCheckedRequestsInTask(taskId);
+        model.addAttribute("checkedRequestsList", checkedRequestsList);
+
+        List<Request> uncheckedRequestsList = requestService.selectAllUncheckedRequestsInTask(taskId);
+        model.addAttribute("uncheckedRequestsList", uncheckedRequestsList);
+
 
         return "taskHistory";
     }
@@ -103,7 +112,7 @@ public class NewTaskController {
     }
 
     @PostMapping("/{projectId}/{taskId}/review")
-    public String createReview(@RequestParam ("request") List<String> stringRequest, @PathVariable("taskId") Long taskId) {
+    public String createReview(@RequestParam("request") List<String> stringRequest, @PathVariable("taskId") Long taskId) {
 
         Review newReview = new Review();
         newReview.setTask(taskService.findById(taskId));
@@ -111,12 +120,23 @@ public class NewTaskController {
         Long reviewId = reviewService.saveReviewReturnId(newReview);
 
         List<String> list = stringRequest;
-        List<Request> requestsList = requestService.createRequestsList(list, reviewId);
+        List<Request> requestsList = requestService.createNewRequestsList(list, reviewId);
 
         Review review = reviewService.findReviewById(reviewId);
         review.setRequest(requestsList);
         reviewService.saveReview(review);
 
+        return "redirect:../" + taskId;
+    }
+
+    @GetMapping("/{projectId}/{taskId}/{requestId}")
+    public String getSingleUploadPage(@PathVariable("taskId") Long taskId, @PathVariable("requestId") Long requestId) {
+        Request request = requestService.findOne(requestId);
+        if(request.getStatus()==false){
+            request.setStatus(true);
+        }
+        else {request.setStatus(false);}
+        requestService.save(request);
         return "redirect:../" + taskId;
     }
 }

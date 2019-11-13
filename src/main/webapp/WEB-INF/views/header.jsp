@@ -13,10 +13,9 @@
 </head>
 <body>
 
-<a href="/" class="request-field-btn">  home  </a>
-<a href="/projekty/" class="request-field-btn">  projekty  </a>
-<a href="/projekt/3" class="request-field-btn">  projekt  </a>
-<a href="/projekt/3/zadanie/1/history" class="request-field-btn">  zadanie  </a>
+<a href="/" class="task-btn">  home  </a>
+<a href="/projekty/" class="task-btn">  projekty  </a>
+<a href="/projekt/3" class="task-btn">  projekt  </a>
 
 </body>
 </html>

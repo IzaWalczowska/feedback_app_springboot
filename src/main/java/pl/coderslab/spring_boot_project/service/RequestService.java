@@ -20,11 +20,13 @@ public class RequestService {
         this.reviewService = reviewService;
     }
 
+    public Request findOne(Long id){return requestRepository.findById(id).orElse(null);}
+
     public void save(Request request) {
         requestRepository.save(request);
     }
 
-    public List<Request> createRequestsList(List<String> list, Long reviewId) {
+    public List<Request> createNewRequestsList(List<String> list, Long reviewId) {
         List<Request> requestsList = new ArrayList<>();
         for (String stringRequest : list) {
             Request request = new Request();
@@ -44,4 +46,31 @@ public class RequestService {
         }
         return stringRequests;
     }
+
+    public List<Request> findAllRequestsInTask(Long taskId){
+        return requestRepository.findAllRequestsInTask(taskId);
+    }
+
+    public List<Request> selectAllCheckedRequestsInTask(Long taskId){
+        List<Request> allRequests=findAllRequestsInTask(taskId);
+        List<Request> checkedRequests=new ArrayList<>();
+        for (Request request: allRequests) {
+            if(request != null && request.getStatus() == true){
+                checkedRequests.add(request);
+            }
+        }
+        return checkedRequests;
+    }
+    public List<Request> selectAllUncheckedRequestsInTask(Long taskId){
+        List<Request> allRequests=findAllRequestsInTask(taskId);
+        List<Request> uncheckedRequests=new ArrayList<>();
+        for (Request request: allRequests) {
+            if(request != null && request.getStatus() == false){
+                uncheckedRequests.add(request);
+            }
+        }
+        return uncheckedRequests;
+    }
 }
+
+

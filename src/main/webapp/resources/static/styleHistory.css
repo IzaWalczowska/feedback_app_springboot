@@ -17,14 +17,12 @@ a:visited {
 .container {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: 120px 1fr 40px;
-
 }
 
 #header {
     grid-column: 1/4;
-
 }
 
 #mainColumn {
