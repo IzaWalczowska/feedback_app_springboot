@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.spring_boot_project.model.Project;
-import pl.coderslab.spring_boot_project.model.Request;
-import pl.coderslab.spring_boot_project.model.Task;
+import pl.coderslab.spring_boot_project.model.*;
 import pl.coderslab.spring_boot_project.service.ImageService;
 import pl.coderslab.spring_boot_project.service.ProjectService;
 import pl.coderslab.spring_boot_project.service.RequestService;
@@ -34,11 +32,14 @@ public class ProjectController {
 
     @GetMapping("/projekty")
     public String showProjects(Model model) {
-        List<Project> projectsList = projectService.findAll();
+        List<Project> projectsList = projectService.findAllProjectsSorted();
+        List<ProjectDto> projectDtoList = projectService.createProjectDtosList(projectsList);
+
+
         Project project = new Project();
         model.addAttribute("project", project);
-        if (projectsList != null) {
-            model.addAttribute("projectsList", projectsList);
+        if (projectDtoList != null) {
+            model.addAttribute("projectDtoList", projectDtoList);
         }
         return "projectsList";
     }
@@ -56,8 +57,13 @@ public class ProjectController {
     @GetMapping("/projekt/{id}")
     public String showTasks(@PathVariable long id, Model model) {
 
+        Task task = new Task();
+        model.addAttribute("task", task);
+
         model.addAttribute("projectId", id);
         List<Task> tasksList = taskService.findByProjectId(id);
+        List<TaskDto> taskDtoList = taskService.createTaskDtoList(tasksList);
+        model.addAttribute("taskDtoList", taskDtoList);
 
         // TODO: to be tesed
 //        for (Task task:tasksList) {
@@ -66,9 +72,20 @@ public class ProjectController {
 //            String attribiteName = taskId.toString();
 //            model.addAttribute(attribiteName, requestsList);
 //        }
-        model.addAttribute("tasksList", tasksList);
-        Task task = new Task();
-        model.addAttribute("task", task);
+
+
+        int tasksCount = taskService.countByProjectId(id);
+        model.addAttribute("taskCount", tasksCount);
+
+        int finishedTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.ACCEPTED);
+        model.addAttribute("finishedTasksCount", finishedTasksCount);
+
+
+
+
+//        for (Task task1 : tasksList) {
+//
+//        }
 
         return "project";
     }

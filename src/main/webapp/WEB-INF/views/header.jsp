@@ -9,13 +9,12 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="<c:url value="/resources/static/gridStyle.css" />" rel="stylesheet">
 </head>
 <body>
 
-<a href="/" class="task-btn">  home  </a>
-<a href="/projekty/" class="task-btn">  projekty  </a>
-<a href="/projekt/3" class="task-btn">  projekt  </a>
+<a href="/" class="add-btn">  home  </a>
+<a href="/projekty/" class="add-btn">  projekty  </a>
+<a href="/projekt/3" class="add-btn">  projekt  </a>
 
 </body>
 </html>

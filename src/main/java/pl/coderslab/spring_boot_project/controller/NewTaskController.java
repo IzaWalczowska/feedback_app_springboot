@@ -48,7 +48,7 @@ public class NewTaskController {
         List<Task> tasksList = taskService.findByProjectId(projectId);
         model.addAttribute("tasksList", tasksList);
 
-        List<historyDto> historyList = dtoService.latestDtosListSorted(taskId);
+        List<HistoryDto> historyList = dtoService.latestDtosListSorted(taskId);
         model.addAttribute("historyList", historyList);
 
 //        List<Request> requestsList = requestService.findAllRequestsInTask(taskId);

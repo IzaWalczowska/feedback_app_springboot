@@ -1,5 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!-- Latest compiled and minified CSS -->
+<%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">--%>
+<%--<!-- jQuery library -->--%>
+<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>--%>
+<%--<!-- Latest compiled JavaScript -->--%>
+<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>--%>
 <%--
   Created by IntelliJ IDEA.
   User: iza
@@ -12,7 +18,7 @@
 
 <head>
     <title>Projekty</title>
-    <link href="<c:url value="/resources/static/gridStyle.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/static/styleProjectsList.css" />" rel="stylesheet">
 </head>
 
 <div class="container">
@@ -23,28 +29,29 @@
     <div id="mainColumn">
 
         <div id="mainColumn-folders">
-            <div class="folder">
-                <form:form method="post" modelAttribute="project">
-                    <label>dodaj zadanie</label>
+
+            <div class="formCard">
+                <form:form method="post" modelAttribute="project" class="projectForm">
+
                     <form:input path="name" placeholder="nazwa"/>
-                    <form:textarea path="description" placeholder="opis"/>
                     <form:input path="deadline" placeholder="data (yyyy/MM/dd)"/>
-                    <form:errors path="deadline"/>
-                    <%--        <ul>--%>
+                    <form:textarea path="description" placeholder="opis"/>
+                    <input type="submit" value="utwórz nowy projekt" id="submit">
+                                <%--        <ul>--%>
                     <%--            <li><form:input path="tasks"/></li>--%>
                     <%--        </ul>--%>
                     <%--    <form:input path="deadline"/>--%>
                     <%--    <form:input path="task"/>--%>
-                    <input type="submit" value="utwórz">
+
                 </form:form>
             </div>
 
             <c:choose>
-                <c:when test="${not empty projectsList}">
-                    <c:forEach items="${projectsList}" var="project">
+                <c:when test="${not empty projectDtoList}">
+                    <c:forEach items="${projectDtoList}" var="project">
                         <div class="folder">
-                            <a href="/projekt/${project.id}">${project.name}</a>
-                            <img src="">
+                            <div class="projectName"> <a href="/projekt/${project.id}">${project.projectName}</a></div>
+                           <div class="imdDiv">    <img src="${project.imagePath}" class="img-miniature"></div>
                         </div>
                     </c:forEach>
                 </c:when>

@@ -1,0 +1,17 @@
+package pl.coderslab.spring_boot_project.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.xml.crypto.Data;
+
+@Getter
+@Setter
+public class TaskDto {
+
+    Long taskId;
+    String name;
+    int daysToDeadline;
+    String status;
+    String lastImageSource;
+}

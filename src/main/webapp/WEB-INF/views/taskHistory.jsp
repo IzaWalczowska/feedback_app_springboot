@@ -38,17 +38,17 @@
 
     <div id="mainColumn">
 
-        <a href="${taskId}/uploadImage" class="choose-btn" id="uploadButton"> wczytaj obraz </a>
-        <%--            onclick="popup(this.href)--%>
-        <a href="${taskId}/review" class="choose-btn" id="uploadButton"> stworz recenzje </a>
-
-        <div class="card">
+        <div class="comment-card">
             <div>
-                <form:form method="post" modelAttribute="comment">
+                <form:form method="post" modelAttribute="comment" class="commentForm">
 <%--                    <label>skomentuj</label>--%>
-                    <form:input path="content" placeholder="skomentuj"/>
-                    <input type="submit">
+                    <form:textarea path="content" placeholder="skomentuj"/>
+                    <a href="${taskId}/uploadImage" class="add-btn" id="uploadButton"> wczytaj obraz </a>
+                    <%--            onclick="popup(this.href)--%>
+                    <a href="${taskId}/review" class="add-btn" id="uploadButton"> stworz recenzje </a>
+                    <input type="submit" value="skomentuj" class="add-btn">
                 </form:form>
+
             </div>
         </div>
 

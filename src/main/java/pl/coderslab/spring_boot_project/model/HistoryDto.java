@@ -6,7 +6,7 @@ import lombok.Setter;
 import java.util.List;
 @Getter
 @Setter
-public class historyDto implements Comparable<historyDto>{
+public class HistoryDto implements Comparable<HistoryDto>{
     String author;
     String created;
     String imageSource;
@@ -14,7 +14,7 @@ public class historyDto implements Comparable<historyDto>{
     List<String> requests;
 
     @Override
-    public int compareTo(historyDto historyDto) {
+    public int compareTo(HistoryDto historyDto) {
 
         return historyDto.created.compareTo(this.created);
 

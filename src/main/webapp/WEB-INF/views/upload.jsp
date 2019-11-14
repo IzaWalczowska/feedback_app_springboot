@@ -25,10 +25,10 @@
 </container>
 
 <form method="post" enctype="multipart/form-data" class="form-upload">
-    <label class="choose-btn">przeglądaj
+    <label class="add-btn">przeglądaj
         <input name="uploadFile" id="fileInput" type="file" accept="image/jpeg, image/png" onchange="previewFile()">
     </label>
-    <input type="submit" value="ok" name="submit" class="choose-btn">
+    <input type="submit" value="ok" name="submit" class="add-btn">
 </form>
 
 </body>
