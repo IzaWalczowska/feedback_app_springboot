@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.List;
 @Table(name = "tasks")
 @Getter
 @Setter
-public class Task {
+public class Task implements Comparable<Task>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,13 +43,24 @@ public class Task {
     private String taskStatus = TaskStatus.WAITING.name();
 
 
-//    table tasks {
-//        id int [pk, increment]
-//        name varchar
-//        description varchar
-//        created date
-//        deadline date
-//        projects_id int  [ref:> projects.id]
+//    public void setDatetimeString(String datetime) throws ParseException {
+//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//        this.datetime =  (Date)formatter.parse(datetime);
 //    }
+//
+//    public String getDatetimeString() {
+//        if (datetime == null) {
+//            return null;
+//        }
+//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+//        return formatter.format(this.datetime);
+//    }
+
+    @Override
+    public int compareTo(Task task) {
+
+        return task.created.compareTo(this.created);
+
+    }
 
 }

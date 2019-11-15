@@ -14,7 +14,6 @@
 <head>
     <title>Zadania</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
     <%--    <link href="<c:url value="static/style.css" />" rel="stylesheet" type="text/css">--%>
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -32,17 +31,14 @@
 
     <div id="mainLeftColumn">
         <div class="mail-left-col-bkg">
-            <div class="project-name">
-                ${project.name}
-            </div>
             <div class="task-form-div">
                 <img src="" class="noTasksImg">
-
                 <form:form method="post" modelAttribute="task" cssClass="taskForm">
-                    <form:input path="name" placeholder="nazwa"/>
-                    <form:input path="deadline" placeholder="deadline (yyyy/MM/dd)"/>
+                    <form:input path="name"/>
+                    <form:input path="deadline" placeholder="yyyy/MM/dd"/>
                     <%--                type="datetime-local"--%>
-                    <form:textarea path="description" placeholder="opis"/>
+                    <form:errors path="deadline" placeholder="opis"/>
+                    <form:textarea path="description"/>
                     <input type="submit" value="dodaj zadania do projektu" id="submit">
                 </form:form>
             </div>
@@ -50,34 +46,46 @@
                 <c:forEach items="${taskDtoList}" var="task">
                     <a href="../task/${projectId}/${task.taskId}">
                         <div class="task-btn">
-                                <%--                            <div class="task-deadline">--%>
+                            <div class="task-name">${task.name}</div>
+                            <div class="task-deadline">
+                                koniec zadania za: ${task.daysToDeadline} dni
+                            </div>
+
+<%--                            <div>--%>
+<%--                                <c:choose>--%>
+<%--                                    <c:when test="${task.status == 'WAITING'}">--%>
+<%--                                        <p class="task-status" style="color: #57a5d2">nie rozpoczęto</p>--%>
+<%--                                    </c:when>--%>
+<%--                                    <c:when test="${task.status == 'TO_REVIEW'}">--%>
+<%--                                        <p class="task-status" style="color: #59d8db">czeka na recenzję</p>--%>
+<%--                                    </c:when>--%>
+<%--                                    <c:when test="${task.status == 'ONGOING'}">--%>
+<%--                                        <p class="task-status" style="color: #53db80">w trakcie realizacji</p>--%>
+<%--                                    </c:when>--%>
+<%--                                    <c:when test="${task.status == 'ACCEPTED'}">--%>
+<%--                                        <p class="task-status" style="color: #eaeb14">zakończone</p>--%>
+<%--                                    </c:when>--%>
+<%--                                </c:choose>--%>
+<%--                            </div>--%>
+
                             <c:choose>
                                 <c:when test="${task.status == 'WAITING'}">
-                                    <div class="stat-waitng"><span
-                                            style="font-size: 11px">zostało:</span><br> ${task.daysToDeadline} dni
-                                    </div>
+                                    <div class="stat-waitng"></div>
                                 </c:when>
                                 <c:when test="${task.status == 'TO_REVIEW'}">
-                                    <div class="stat-toreview"><span
-                                            style="font-size: 11px">zostało:</span><br> ${task.daysToDeadline} dni
-                                    </div>
+                                    <div class="stat-toreview"></div>
                                 </c:when>
                                 <c:when test="${task.status == 'ONGOING'}">
-                                    <div class="stat-ongoing"><span
-                                            style="font-size: 11px">zostało:</span><br> ${task.daysToDeadline} dni
-                                    </div>
+                                    <div class="stat-ongoing"></div>
                                 </c:when>
                                 <c:when test="${task.status == 'ACCEPTED'}">
-                                    <div class="stat-accepted"><span
-                                            style="font-size: 11px">zostało:</span><br> ${task.daysToDeadline} dni
-                                    </div>
+                                    <div class="stat-accepted"></div>
                                 </c:when>
                             </c:choose>
-                                <%--                            </div>--%>
-
-                            <div class="task-name">${task.name}</div>
+                                <%--                        <div class="img-div">--%>
+                                <%--                                                        <img src="${task.lastImageSource}" class="task-img">--%>
+                                <%--                        </div>--%>
                         </div>
-
                     </a>
                 </c:forEach>
             </c:if>
@@ -85,23 +93,32 @@
     </div>
 
     <div id="mainRightColumn">
-        <div class="mail-right-col-bkg">
-            <div class="project-info">
-                <span> skończone:</span>
-                <p class="fin-tasks"> ${finishedTasksCount}/${taskCount}</p>
-                <br>
-                <span> pozostało dni:</span>
-                <p class="days-left">${daysToDeadline}</p>
-                <br>
-                <span>deadline:</span>
-                <p class="deadline">${deadlineDate}</p>
-            </div>
+
+        <div id="project-info">
+            <p> ukończone zadania:</p>
+            <p> ${finishedTasksCount}/${taskCount}</p>
+            <p>data zakończenia projektu:</p>
+            <p>${deadlineDate}</p>
+            <p> dni do końca projektu:</p>
+            <p>${daysToDeadline}</p>
         </div>
+
 
         <div>
             <div class="chart-div">
                 <canvas id="myPieChart"></canvas>
             </div>
+            <%--                    <div class="mt-4 text-center small">--%>
+            <%--                    <span class="mr-2">--%>
+            <%--                      <i class="fas fa-circle text-primary"></i> Direct--%>
+            <%--                    </span>--%>
+            <%--                        <span class="mr-2">--%>
+            <%--                      <i class="fas fa-circle text-success"></i> Social--%>
+            <%--                    </span>--%>
+            <%--                        <span class="mr-2">--%>
+            <%--                      <i class="fas fa-circle text-info"></i> Referral--%>
+            <%--                    </span>--%>
+            <%--                    </div>--%>
         </div>
 
     </div>
@@ -123,7 +140,7 @@
                 datasets: [{
                     data: [${waitingTasksCount}, ${toReviewTasksCount}, ${ongoingTasksCount}, ${finishedTasksCount}],
                     // data: [10, 6, 5, 8],
-                    backgroundColor: ['#5d6890', '#59d8db', '#7fb4df', '#dcdcdc'],
+                    backgroundColor: ['#2cafdf', '#00c877', '#77cc15', '#eaeb14'],
                     hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf', '#81BDEB'],
                     hoverBorderColor: "rgba(234, 236, 244, 1)",
                 }],
@@ -135,15 +152,15 @@
                     bodyFontColor: "#858796",
                     borderColor: '#dddfeb',
                     borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
+                    xPadding: 25,
+                    yPadding: 25,
                     displayColors: false,
                     caretPadding: 10,
                 },
                 legend: {
                     display: false
                 },
-                cutoutPercentage: 75,
+                cutoutPercentage: 80,
             },
         });
 

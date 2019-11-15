@@ -55,7 +55,7 @@ public class RequestService {
         List<Request> allRequests=findAllRequestsInTask(taskId);
         List<Request> checkedRequests=new ArrayList<>();
         for (Request request: allRequests) {
-            if(request != null && request.getStatus() == true){
+            if(request != null && request.getStatus() == false){
                 checkedRequests.add(request);
             }
         }
@@ -65,7 +65,7 @@ public class RequestService {
         List<Request> allRequests=findAllRequestsInTask(taskId);
         List<Request> uncheckedRequests=new ArrayList<>();
         for (Request request: allRequests) {
-            if(request != null && request.getStatus() == false){
+            if(request != null && request.getStatus() == true){
                 uncheckedRequests.add(request);
             }
         }

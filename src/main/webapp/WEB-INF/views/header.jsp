@@ -9,12 +9,13 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="<c:url value="/resources/static/styleHeader.css"/>" rel="stylesheet">
 </head>
 <body>
-
-<a href="/" class="add-btn">  home  </a>
-<a href="/projekty/" class="add-btn">  projekty  </a>
-<a href="/projekt/3" class="add-btn">  projekt  </a>
-
+<div class="navbar">
+    <a href="/" class="menu-btn"> home </a>
+    <a href="/projekty/" class="menu-btn"> projekty </a>
+    <a href="/" class="menu-btn"> wyloguj </a>
+</div>
 </body>
 </html>

@@ -3,14 +3,13 @@ html, body {
     background-image: url("/resources/images/dots_gradient_zircon_1.jpg");
     background-size: cover;
     font-family: 'Work Sans', sans-serif;
-    font-size: 16px;
 
 }
 
 .container {
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 4.5fr 3.5fr 1fr;
+    grid-template-columns: 1fr 5fr 3fr 1fr;
     grid-template-rows: 10% 1fr 5%;
     color: #57a5d2;
 }
@@ -22,7 +21,7 @@ html, body {
 #mainLeftColumn {
     grid-column: 2/3;
     grid-row: 2/3;
-    padding: 10px 10px;
+    padding: 15px 20px;
     overflow: scroll;
     /*border-radius: 12px;*/
 }
@@ -30,7 +29,7 @@ html, body {
 #mainRightColumn {
     grid-column: 3/4;
     grid-row: 2/3;
-    padding: 10px 10px;
+
     overflow: scroll;
     /*border-radius: 12px;*/
 }
@@ -39,14 +38,8 @@ html, body {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 1vh;
     width: inherit;
-    height: 95%;
-    padding: 12px 12px;
-}
-.mail-right-col-bkg {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 1vh;
-    width: inherit;
-    padding: 12px 12px;
+    height: inherit;
+    padding: 15px 20px;
 }
 
 a {
@@ -64,34 +57,12 @@ a:visited {
     padding-top: 20px;
 }
 
-.project-name{
-    width: 100%;
-    height: 6vh;
-    padding-top: 1vh;
-    margin-bottom: 1vh;
-    font-size: 25px;
-    /*font-family: 'Playfair Display', serif;*/
-    /*font-style: italic;*/
-    font-weight: bolder;
-    color: white;
-    border-radius: 0.6vh;
-    outline: none;
 
-    background: rgba(19,106,130,1);
-    background: -moz-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(19,106,130,1)), color-stop(100%, rgba(93,104,144,1)));
-    background: -webkit-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
-    background: linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#136a82', endColorstr='#5d6890', GradientType=1 );
-
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    white-space: nowrap;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
+.fullHeightImg {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 360px;
 }
 
 .task-form-div {
@@ -104,25 +75,27 @@ a:visited {
     font-size: 14px;
     border-radius: 0.6vh;
     outline: none;
-    background: #ffffff;
+    background: white;
     cursor: pointer;
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
     font-weight: bold;
+    border: 1px solid #f5f5f5;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
 }
 
 .task-btn {
     display: inline-grid;
-    grid-template-columns: 1fr 4fr 3fr;
+    grid-template-columns: 1fr 3fr 2fr;
+    grid-template-rows: 60% 1fr;
     justify-content: space-evenly;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
     horiz-align: center;
-    height: 6vh;
+    height: 7vh;
     margin-bottom: 1vh;
     font-size: 14px;
     /*border-top-left-radius: 4vh;*/
@@ -137,15 +110,15 @@ a:visited {
     text-align: center;
     white-space: nowrap;
     font-weight: bold;
+    border: 1px solid #f5f5f5;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .task-name {
-    grid-column: 2/4;
+    grid-column: 2/3;
     grid-row: 1/3;
     margin: auto;
     font-size: 1.3em;
-    color: #5d6890;
 }
 
 .task-status {
@@ -156,110 +129,67 @@ a:visited {
 }
 
 .task-deadline {
-    grid-column: 1/2;
+    grid-column: 3/4;
     grid-row: 1/3;
+    margin: auto;
+    text-align: center;
 }
 
 .stat-waitng {
-    border-left: 8px solid #5d6890;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 4vh;
+    border: 5px solid #3498db;
     grid-column: 1/2;
     grid-row: 1/3;
-    align-self: center;
-    height: inherit;
-    border-radius: 0.6vh;
-    font-size: 15px;
-    font-weight: bolder;
-    color: #5d6890;
-
-    }
+    justify-self: left;
+    margin: 1vh;
+}
 
 .stat-toreview {
-    border-left: 8px solid  #59d8db;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 4vh;
+    border: 5px solid #59d8db;
     grid-column: 1/2;
     grid-row: 1/3;
-    align-self: center;
-    height: inherit;
-    border-radius: 0.6vh;
-    font-size: 15px;
-    font-weight: bolder;
-    color: #5d6890;
+    justify-self: left;
+    margin: 1vh;
 }
 
 .stat-ongoing {
-    border-left: 8px solid rgb(127, 180, 223);
+    height: 4vh;
+    width: 4vh;
+    border-radius: 4vh;
+    border: 5px solid #6edb54;
     grid-column: 1/2;
     grid-row: 1/3;
-    align-self: center;
-    height: inherit;
-    border-radius: 0.6vh;
-    font-size: 15px;
-    font-weight: bolder;
-    color: #5d6890;
+    justify-self: left;
+    margin: 1vh;
 }
 
 .stat-accepted {
-    border-left: 8px solid  rgb(220, 220, 220);
+    height: 4vh;
+    width: 4vh;
+    border-radius: 4vh;
+    border: 5px solid #dbdb14;
     grid-column: 1/2;
     grid-row: 1/3;
-    align-self: center;
-    height: inherit;
-    border-radius: 0.6vh;
-    font-size: 15px;
-    font-weight: bolder;
-    color: #5d6890;
+    justify-self: left;
+    margin: 1vh;
 }
 
-.project-info {
+#project-info {
     text-align: center;
-    font-size: 1em;
-    margin: 5px;
-    text-align: right;
+
 }
 
-.project-info span{
-    display: inline;
-    text-align: center;
-    font-size: 1em;
-    margin: 10px;
-    color: #5d6890;
-}
-
-.project-info p{
-    display: inline;
-text-align: right;
-    margin-top: 30px;
-    font-family: 'Playfair Display', serif;
-    font-weight: bolder;
- }
-
-.fin-tasks{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bolder;
-    font-style: italic;
-    /*font-family: 'Abril Fatface', cursive;*/
-    color: #57a5d2 ;
-    margin: 0;
-}
-
-.deadline{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bolder;
-    font-style: italic;
-    /*font-family: 'Abril Fatface', cursive;*/
-    color: #57a5d2 ;
-    margin: 0;
-}
-
-.days-left{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bolder;
-    font-style: italic;
-    /*font-family: 'Abril Fatface', cursive;*/
-    color: #57a5d2 ;
-    margin: 0;
+.task-img {
+    grid-column: 3/4;
+    grid-row: -1/-3;
+    height: 115px;
+    width: 140px;
+    /*object-fit: cover;*/
 }
 
 .img-div {
@@ -277,11 +207,10 @@ text-align: right;
 }
 
 .taskForm {
-    width: 95%;
+    width: 90%;
     margin-top: 1vh;
     margin-right: auto;
     margin-left: auto;
-    font-family: 'Work Sans', sans-serif;
 }
 
 .taskForm input[type="text"],
@@ -293,14 +222,13 @@ text-align: right;
     -moz-box-sizing: border-box;
     width: 50%;
     height: 30px;
-    background: #ffffff;
+    background: #fcfcfc;
     display: block;
     outline: none;
-    border: 1px solid #bcbcbc;
+    border: 1px solid #576686;
     line-height: 25px;
     font-size: 16px;
     padding: 10px;
-    font-family: 'Work Sans', sans-serif;
 
     /*font-family: Georgia, "Times New Roman", Times, serif;*/
 
@@ -314,15 +242,15 @@ text-align: right;
     /*-moz-box-sizing: border-box;*/
     width: 100%;
     height: 60px;
-    background: #ffffff;
+    background: #fcfcfc;
     display: block;
     outline: none;
     line-height: 25px;
     font-size: 16px;
     padding: 10px;
-    border: 1px solid #bcbcbc;
+    border: 1px solid #576686;
     border-top: 0px;
-    font-family: 'Work Sans', sans-serif;
+
 
     /*font-family: Georgia, "Times New Roman", Times, serif;*/
 
@@ -337,20 +265,21 @@ text-align: right;
     text-decoration: none;
     text-align: center;
     white-space: nowrap;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    color: #bcbcbc;
-    border: 1px solid #bcbcbc;
-    background: #ffffff;
+    color: #576686;
+    border: 1px solid #171720;
+    background: white;
     border-top: 0px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
     horiz-align: right;
     vertical-align: middle;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
     transition: all 0.2s;
-    font-family: 'Work Sans', sans-serif;
+
 }
 
 .projectForm label {
@@ -365,7 +294,7 @@ text-align: right;
     font-size: 14px;
     font-weight: bold;
     color: white;
-    border: 1px solid #bcbcbc;
+    border: 1px solid #181721;
     horiz-align: right;
     vertical-align: middle;
     border-top-right-radius: 4px;

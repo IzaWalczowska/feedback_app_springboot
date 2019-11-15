@@ -18,6 +18,9 @@
 
 <head>
     <title>Projekty</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
     <link href="<c:url value="/resources/static/styleProjectsList.css" />" rel="stylesheet">
 </head>
 
@@ -29,19 +32,17 @@
     <div id="mainColumn">
 
         <div id="mainColumn-folders">
-
+            <div class="project-name">
+                Twoje Projekty
+            </div>
             <div class="formCard">
                 <form:form method="post" modelAttribute="project" class="projectForm">
 
                     <form:input path="name" placeholder="nazwa"/>
-                    <form:input path="deadline" placeholder="data (yyyy/MM/dd)"/>
+                    <form:input path="deadline" placeholder="deadline (yyyy/MM/dd)"/>
                     <form:textarea path="description" placeholder="opis"/>
-                    <input type="submit" value="utwórz nowy projekt" id="submit">
-                                <%--        <ul>--%>
-                    <%--            <li><form:input path="tasks"/></li>--%>
-                    <%--        </ul>--%>
-                    <%--    <form:input path="deadline"/>--%>
-                    <%--    <form:input path="task"/>--%>
+                    <input type="submit" value="utwórz nowy projekt" class="submit">
+
 
                 </form:form>
             </div>
@@ -49,10 +50,12 @@
             <c:choose>
                 <c:when test="${not empty projectDtoList}">
                     <c:forEach items="${projectDtoList}" var="project">
-                        <div class="folder">
-                            <div class="projectName"> <a href="/projekt/${project.id}">${project.projectName}</a></div>
-                           <div class="imdDiv">    <img src="${project.imagePath}" class="img-miniature"></div>
-                        </div>
+                        <a href="/projekt/${project.id}">
+                            <div class="folder">
+                                <div class="projectName"> ${project.projectName}</div>
+                                <div class="imdDiv"><img src="${project.imagePath}" class="img-miniature"></div>
+                            </div>
+                        </a>
                     </c:forEach>
                 </c:when>
                 <c:otherwise>

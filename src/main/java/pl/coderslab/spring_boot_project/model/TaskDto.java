@@ -11,7 +11,7 @@ public class TaskDto {
 
     Long taskId;
     String name;
-    int daysToDeadline;
+    Long daysToDeadline;
     String status;
     String lastImageSource;
 }

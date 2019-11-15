@@ -1,0 +1,28 @@
+
+.menu-btn {
+    display: inline-block;
+    width: 7vw;
+    height: 4vh;
+    margin-top: 10px;
+    padding: 6px 6px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1em;
+    border-radius: 0.6vh;
+    vertical-align: middle;
+    border-left: 6px solid white;
+color: #3498db;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.navbar{
+margin-left: auto;
+    color: #3498db;
+background-color: rgba(255, 255, 255, 0.5);
+}

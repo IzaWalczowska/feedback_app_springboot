@@ -45,17 +45,15 @@ public class NewTaskController {
         Comment comment = new Comment();
         model.addAttribute("comment", comment);
 
+        Project tasksProject = projectService.findById(projectId);
+        model.addAttribute("project", tasksProject);
+
         List<Task> tasksList = taskService.findByProjectId(projectId);
         model.addAttribute("tasksList", tasksList);
 
         List<HistoryDto> historyList = dtoService.latestDtosListSorted(taskId);
         model.addAttribute("historyList", historyList);
 
-//        List<Request> requestsList = requestService.findAllRequestsInTask(taskId);
-//        model.addAttribute("requestsList", requestsList);
-//
-//        Request oneRequest = new Request();
-//        model.addAttribute("oneRequest", oneRequest);
 
         List<Request> checkedRequestsList = requestService.selectAllCheckedRequestsInTask(taskId);
         model.addAttribute("checkedRequestsList", checkedRequestsList);
@@ -126,17 +124,32 @@ public class NewTaskController {
         review.setRequest(requestsList);
         reviewService.saveReview(review);
 
+        Task task = taskService.findById(taskId);
+        String newStatus = TaskStatus.ONGOING.name();
+        task.setTaskStatus(newStatus);
+        taskService.save(task);
+
         return "redirect:../" + taskId;
     }
 
     @GetMapping("/{projectId}/{taskId}/{requestId}")
     public String getSingleUploadPage(@PathVariable("taskId") Long taskId, @PathVariable("requestId") Long requestId) {
         Request request = requestService.findOne(requestId);
-        if(request.getStatus()==false){
+        if (request.getStatus() == false) {
             request.setStatus(true);
+        } else {
+            request.setStatus(false);
         }
-        else {request.setStatus(false);}
         requestService.save(request);
+        return "redirect:../" + taskId;
+    }
+
+    @GetMapping("/{projectId}/{taskId}/accept")
+    public String acceptTask(@PathVariable("taskId") Long taskId){
+        Task task = taskService.findById(taskId);
+        String newStatus = TaskStatus.ACCEPTED.name();
+        task.setTaskStatus(newStatus);
+        taskService.save(task);
         return "redirect:../" + taskId;
     }
 }

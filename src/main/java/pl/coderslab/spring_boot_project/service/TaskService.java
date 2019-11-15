@@ -7,11 +7,15 @@ import pl.coderslab.spring_boot_project.model.Task;
 import pl.coderslab.spring_boot_project.model.TaskDto;
 import pl.coderslab.spring_boot_project.model.TaskStatus;
 import pl.coderslab.spring_boot_project.repository.TaskRepository;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @Transactional
@@ -39,6 +43,10 @@ public class TaskService {
         return taskRepository.findAllByProjectId(id);
     }
 
+    public List<Task> findAllByProjectIdOrderByCreatedDesc(long id) {
+        return taskRepository.findAllByProjectIdOrderByCreatedDesc(id);
+    }
+
 
     public Task findById(Long id) {
         return taskRepository.findById(id).orElse(null);
@@ -48,7 +56,7 @@ public class TaskService {
         return taskRepository.findAllByProjectId(id).size();
     }
 
-    public int countallInProjectByStatus(Long id, TaskStatus taskStatus) {
+    public int countallInProjectByStatus(Long id, String taskStatus) {
         return taskRepository.allInProjectByStatus(id, taskStatus).size();
     }
 
@@ -59,18 +67,25 @@ public class TaskService {
             taskDto.setTaskId(task.getId());
             taskDto.setName(task.getName());
             taskDto.setStatus(task.getTaskStatus());
-            taskDto.setLastImageSource(imageService.findLastImageInTask(task.getId()).getPath());
+            if (imageService.findLastImageInTask(task.getId()) != null) {
+                String lastImageSource = imageService.findLastImageInTask(task.getId()).getPath();
+                taskDto.setLastImageSource(lastImageSource);
+            }
+
             taskDto.setDaysToDeadline(countDaysToDeadline(task.getId()));
             taskDtoList.add(taskDto);
         }
         return taskDtoList;
     }
 
-    public int countDaysToDeadline(Long id){
+    public Long countDaysToDeadline(Long id) {
         Task task = findById(id);
         Date deadline = task.getDeadline();
         Date currentDate = new Date();
-        int remainingDays = deadline.compareTo(currentDate);
+
+        long diffInMillies = Math.abs(deadline.getTime() - currentDate.getTime());
+        long remainingDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
         return remainingDays;
     }
 }

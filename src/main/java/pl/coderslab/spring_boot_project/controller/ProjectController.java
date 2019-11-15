@@ -12,6 +12,7 @@ import pl.coderslab.spring_boot_project.service.RequestService;
 import pl.coderslab.spring_boot_project.service.TaskService;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -55,49 +56,59 @@ public class ProjectController {
     }
 
     @GetMapping("/projekt/{id}")
-    public String showTasks(@PathVariable long id, Model model) {
+    public String showTasks(@PathVariable Long id, Model model) throws ParseException {
 
         Task task = new Task();
         model.addAttribute("task", task);
 
         model.addAttribute("projectId", id);
-        List<Task> tasksList = taskService.findByProjectId(id);
-        List<TaskDto> taskDtoList = taskService.createTaskDtoList(tasksList);
-        model.addAttribute("taskDtoList", taskDtoList);
+        List<Task> tasksList = taskService.findAllByProjectIdOrderByCreatedDesc(id);
 
-        // TODO: to be tesed
-//        for (Task task:tasksList) {
-//            Long taskId = task.getId();
-//            List<Request> requestsList = requestService.findAllRequestsInTask(taskId);
-//            String attribiteName = taskId.toString();
-//            model.addAttribute(attribiteName, requestsList);
-//        }
+
+
+        Project project = projectService.findById(id);
+        model.addAttribute("project", project);
+
+        String deadlineDate = projectService.formatDate(project.getDeadline());
+        model.addAttribute("deadlineDate", deadlineDate);
+
+
+        Long daysToProjectDeadline =projectService.countDaysToProjectDeadline(id);
+        model.addAttribute("daysToDeadline", daysToProjectDeadline);
+
+        if(tasksList !=null && tasksList.size()>0){
+        List<TaskDto> taskDtoList = taskService.createTaskDtoList(tasksList);
+        model.addAttribute("taskDtoList", taskDtoList);}
 
 
         int tasksCount = taskService.countByProjectId(id);
         model.addAttribute("taskCount", tasksCount);
 
-        int finishedTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.ACCEPTED);
+        int finishedTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.ACCEPTED.name());
         model.addAttribute("finishedTasksCount", finishedTasksCount);
 
+        int ongoingTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.ONGOING.name());
+        model.addAttribute("ongoingTasksCount", ongoingTasksCount);
 
+        int toReviewTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.TO_REVIEW.name());
+        model.addAttribute("toReviewTasksCount", toReviewTasksCount);
 
-
-//        for (Task task1 : tasksList) {
-//
-//        }
+        int waitingTasksCount = taskService.countallInProjectByStatus(id, TaskStatus.WAITING.name());
+        model.addAttribute("waitingTasksCount", waitingTasksCount);
 
         return "project";
     }
 
-    @PostMapping("/projekt/{id}")
-    public String createTask(@Valid @ModelAttribute Task task, BindingResult result, @PathVariable long id) {
+    @PostMapping("/projekt/{projectId}")
+    public String createTask(@Valid @ModelAttribute Task task, BindingResult result, @PathVariable Long projectId) {
         if (result.hasErrors()) {
             return "project";
         }
-        task.setProject(projectService.findById(id));
+
+        task.setProject(projectService.findById(projectId));
         taskService.save(task);
-        return "redirect:/projekt/" + id;
+
+        return "redirect:/projekt/" + projectId;
     }
 
 

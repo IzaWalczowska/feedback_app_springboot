@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: iza
@@ -11,6 +12,7 @@
 <html>
 <head>
     <title>Zadanie</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
     <link href="<c:url value="/resources/static/styleHistory.css" />" rel="stylesheet">
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/todoList.js" />" type="text/javascript"></script>
@@ -26,6 +28,7 @@
 
     <div class="sideTasksDiv">
         <ul>
+            <li class="project-btn"><a href="../../projekt/${project.id}">${project.name}</a></li>
             <c:forEach items="${tasksList}" var="task">
                 <li class="task-btn">
                     <a href="${task.id}">
@@ -47,6 +50,7 @@
                     <%--            onclick="popup(this.href)--%>
                     <a href="${taskId}/review" class="add-btn" id="uploadButton"> stworz recenzje </a>
                     <input type="submit" value="skomentuj" class="add-btn">
+                    <a href="${taskId}/accept" class="add-btn" id="uploadButton"> zaakceptuj </a>
                 </form:form>
 
             </div>
@@ -72,21 +76,6 @@
 
     <div class="sideTodolistDiv">
         <h3>ToDo List</h3>
-
-        <%--      proba zrobienia pojedynczego formularza do kazdego checkboxu plus javascript onchange post form"--%>
-        <%--    <c:forEach items="${requestsList}" var="requestItem">--%>
-        <%--        <form:form modelAttribute="oneRequest" method="post" action="${taskId}/todo">--%>
-        <%--        <div class="request-checkbox">--%>
-        <%--            <form:checkbox path="status" checked = "${requestItem.status ==true ? checked : unchecked}"/>${requestItem.request}--%>
-        <%--        </div>--%>
-        <%--        </form:form>--%>
-        <%--    </c:forEach>--%>
-
-        <%--         proca zrobienia listy checkboxow--%>
-        <%--        <form:checkboxes path="request.status" items="${requestsList}" itemLabel="requestContent" itemValue="status"/>--%>
-        <%--        <input type="submit" value="uaktualnij">--%>
-        <%--        </form:form>--%>
-
 
         <c:if test="${not empty checkedRequestsList}">
             <h5>zadania do zrobienia</h5>
@@ -120,10 +109,6 @@
             </table>
         </c:if>
 
-
-        <%--    <c:if test="${empty checkedRequestsList && empty uncheckedRequestsList}">--%>
-        <%--        <p>nie masz jeszcze nic do zrobienia</p>--%>
-        <%--    </c:if>--%>
     </div>
 
 </div>

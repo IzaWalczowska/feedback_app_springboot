@@ -4,6 +4,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Frank+Ruhl+Libre&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
 
 <%--<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>--%>
 <%--

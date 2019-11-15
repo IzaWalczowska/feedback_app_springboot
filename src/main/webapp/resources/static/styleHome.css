@@ -9,7 +9,7 @@ html, body {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1.2fr 1fr;
-    grid-template-rows: 120px 1fr 40px;
+    grid-template-rows: 10% 1fr 5%;
     justify-content: space-evenly;
 }
 
@@ -46,7 +46,16 @@ a:visited {
     height: 250px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-    background: rgba(87, 102, 134, 0.97);
+
+    background: rgba(19,106,130,1);
+    background: -moz-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(19,106,130,1)), color-stop(100%, rgba(93,104,144,1)));
+    background: -webkit-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
+    background: linear-gradient(45deg, rgba(19,106,130,1) 0%, rgba(93,104,144,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#136a82', endColorstr='#5d6890', GradientType=1 );
+
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -164,8 +173,9 @@ a:visited {
     font-size: 35px;
     font-weight: bolder;
     font-style: italic;
-    margin: 40px;
-    color: #5d6890;
+    /*font-family: 'Abril Fatface', cursive;*/
+    margin: 30px;
+    color: #57a5d2 ;
     /*font-family: 'Playfair Display', serif;*/
 }
 

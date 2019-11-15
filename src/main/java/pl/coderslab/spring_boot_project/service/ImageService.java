@@ -36,7 +36,11 @@ public class ImageService {
     }
 
     public Image findLastImageInProject(Long projectId) {
-        return imageRepository.findLastImageInTask(projectId).get(0);
+        if (imageRepository.findLastImageInProject(projectId).size()>0) {
+           return imageRepository.findLastImageInProject(projectId).get(0);
+        } else {
+            return null;
+        }
     }
 
 //    todo rozwiazac problem wyswietlania okladek projektow
