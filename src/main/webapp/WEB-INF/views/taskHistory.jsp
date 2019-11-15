@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>Zadanie</title>
-    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
     <link href="<c:url value="/resources/static/styleHistory.css" />" rel="stylesheet">
     <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="<c:url value="/resources/js/todoList.js" />" type="text/javascript"></script>
@@ -44,13 +44,13 @@
         <div class="comment-card">
             <div>
                 <form:form method="post" modelAttribute="comment" class="commentForm">
-<%--                    <label>skomentuj</label>--%>
+                    <%--                    <label>skomentuj</label>--%>
                     <form:textarea path="content" placeholder="skomentuj"/>
-                    <a href="${taskId}/uploadImage" class="add-btn" id="uploadButton"> wczytaj obraz </a>
+                    <a href="${taskId}/uploadImage" class="add-btn" > wczytaj obraz </a>
                     <%--            onclick="popup(this.href)--%>
-                    <a href="${taskId}/review" class="add-btn" id="uploadButton"> stworz recenzje </a>
+                    <a href="${taskId}/review" class="add-btn" > stworz recenzje </a>
                     <input type="submit" value="skomentuj" class="add-btn">
-                    <a href="${taskId}/accept" class="add-btn" id="uploadButton"> zaakceptuj </a>
+                    <a href="${taskId}/accept" class="add-btn" > zaakceptuj </a>
                 </form:form>
 
             </div>
@@ -58,7 +58,7 @@
 
         <c:forEach items="${historyList}" var="historyDto">
             <div class="card">
-<%--                <span>${historyDto.created}</span>--%>
+                    <%--                <span>${historyDto.created}</span>--%>
                 <div class="card-field">
                     <c:if test="${not empty historyDto.imageSource}">
                         <img src="${historyDto.imageSource}" class="fullHeightImg">
@@ -75,39 +75,44 @@
     </div>
 
     <div class="sideTodolistDiv">
-        <h3>ToDo List</h3>
 
-        <c:if test="${not empty checkedRequestsList}">
-            <h5>zadania do zrobienia</h5>
-            <table class="requests-table">
-                <c:forEach items="${checkedRequestsList}" var="requestCheckbox">
-                    <tr>
-                        <td>
-                            <div class="request-checkbox"> ${requestCheckbox.request}</div>
-                        </td>
-                        <td>
-                            <a href="${taskId}/${requestCheckbox.id}">x</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
+        <div class="todo-bkg">
+            <div class="todo-bkg-color"> ToDo List </div>
+            <c:if test="${not empty checkedRequestsList}">
+                <div class="todo-btn">zadania do zrobienia</div>
+                <table class="requests-table">
+                    <c:forEach items="${checkedRequestsList}" var="requestCheckbox">
+                        <tr>
+                            <td>
+                                <div class="request-checkbox-arch"> ${requestCheckbox.request}</div>
+                            </td>
+                            <td class="request-circle-arch">
 
-        <c:if test="${not empty uncheckedRequestsList}">
-            <h5>zrobione</h5>
-            <table class="requests-table">
-                <c:forEach items="${uncheckedRequestsList}" var="requestCheckbox">
-                    <tr>
-                        <td>
-                            <div class="request-checkbox"> ${requestCheckbox.request}</div>
-                        </td>
-                        <td>
-                            <a href="${taskId}/${requestCheckbox.id}">x</a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </c:if>
+                                <a href="${taskId}/${requestCheckbox.id}">x</a>
+
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+        </div>
+        <div class="todo-bkg">
+            <c:if test="${not empty uncheckedRequestsList}">
+                <h5>zrobione</h5>
+                <table class="requests-table">
+                    <c:forEach items="${uncheckedRequestsList}" var="requestCheckbox">
+                        <tr>
+                            <td>
+                                <div class="request-checkbox"> ${requestCheckbox.request}</div>
+                            </td>
+                            <td class="request-circle">
+                                <a href="${taskId}/${requestCheckbox.id}">x</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+        </div>
 
     </div>
 

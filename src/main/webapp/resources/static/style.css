@@ -12,8 +12,13 @@
 /*    margin: 0;*/
 /*}*/
 
-
-
+html, body {
+    height: 100%;
+    background-image: url("/resources/images/dots_gradient_zircon_3.jpg");
+    background-size: cover;
+    font-family: 'Work Sans', sans-serif;
+    color: #5d6890;
+}
 
 input[type="file"] {
     display: none;
@@ -154,7 +159,7 @@ ul li {
     color: #8d9499;
     color: #97A1A8;
     background: #fff;
-    border: 2px dashed #C8CBCE;
+    border: 2px solid #C8CBCE;
     text-align: center;
     -webkit-transition: box-shadow 0.3s, border-color 0.3s;
     -moz-transition: box-shadow 0.3s, border-color 0.3s;
@@ -169,6 +174,7 @@ ul li {
     object-fit:cover;
     outline: none;
     text-align: center;
+    text-justify: auto;
     color: #8d9499;
 }
 
@@ -177,11 +183,12 @@ ul li {
     object-fit: cover;
     width: 55%;
     height: 65%;
-    margin: 0 auto 25px auto;
+    margin: 3vh auto 25px auto;
     padding: 8px;
     color: #8d9499;
     background: #fff;
-    border: 2px dashed #C8CBCE;
+    border: 2px solid #5d6890;
+    border-radius: 1vh;
     text-align: center;
     -webkit-transition: box-shadow 0.3s, border-color 0.3s;
     -moz-transition: box-shadow 0.3s, border-color 0.3s;
@@ -197,11 +204,12 @@ ul li {
     color: #8d9499;
     color: #97A1A8;
     background: #fff;
-    border: 2px dashed #C8CBCE;
+    border: 2px solid #5d6890;
     text-align: center;
     -webkit-transition: box-shadow 0.3s, border-color 0.3s;
     -moz-transition: box-shadow 0.3s, border-color 0.3s;
     transition: box-shadow 0.3s, border-color 0.3s;
+    border-radius: 1vh;
 }
 
 

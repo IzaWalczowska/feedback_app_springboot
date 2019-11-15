@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.coderslab.spring_boot_project.model.Image;
 import pl.coderslab.spring_boot_project.model.Request;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class ReviewController {
 
     @GetMapping("/review")
     public String createReview(Model model) {
+
         return "review";
     }
 
