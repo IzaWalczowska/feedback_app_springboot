@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.spring_boot_project.dto.ProjectDto;
+import pl.coderslab.spring_boot_project.dto.TaskDto;
 import pl.coderslab.spring_boot_project.model.*;
 import pl.coderslab.spring_boot_project.service.ImageService;
 import pl.coderslab.spring_boot_project.service.ProjectService;

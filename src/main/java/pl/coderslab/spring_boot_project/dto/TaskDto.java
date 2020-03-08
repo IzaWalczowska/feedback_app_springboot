@@ -1,4 +1,4 @@
-package pl.coderslab.spring_boot_project.model;
+package pl.coderslab.spring_boot_project.dto;
 
 import lombok.Getter;
 import lombok.Setter;

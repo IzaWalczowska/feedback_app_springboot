@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import pl.coderslab.spring_boot_project.dto.HistoryDto;
 import pl.coderslab.spring_boot_project.model.*;
 import pl.coderslab.spring_boot_project.service.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/task")
-public class NewTaskController {
+public class TaskController {
 
     private final DTOService dtoService;
     private final TaskService taskService;
@@ -25,7 +26,7 @@ public class NewTaskController {
     private final RequestService requestService;
 
     @Autowired
-    public NewTaskController(DTOService dtoService, TaskService taskService, ProjectService projectService, CommentService commentService, StorageService storageService, ImageService imageService, ReviewService reviewService, RequestService requestService) {
+    public TaskController(DTOService dtoService, TaskService taskService, ProjectService projectService, CommentService commentService, StorageService storageService, ImageService imageService, ReviewService reviewService, RequestService requestService) {
         this.dtoService = dtoService;
         this.taskService = taskService;
         this.projectService = projectService;

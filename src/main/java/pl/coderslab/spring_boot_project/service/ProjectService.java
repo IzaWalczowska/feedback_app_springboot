@@ -3,10 +3,8 @@ package pl.coderslab.spring_boot_project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.spring_boot_project.model.Image;
 import pl.coderslab.spring_boot_project.model.Project;
-import pl.coderslab.spring_boot_project.model.ProjectDto;
-import pl.coderslab.spring_boot_project.model.Task;
+import pl.coderslab.spring_boot_project.dto.ProjectDto;
 import pl.coderslab.spring_boot_project.repository.ProjectRepository;
 import pl.coderslab.spring_boot_project.repository.TaskRepository;
 

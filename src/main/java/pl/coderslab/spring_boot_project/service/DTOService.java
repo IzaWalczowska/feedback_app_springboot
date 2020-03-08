@@ -3,7 +3,7 @@ package pl.coderslab.spring_boot_project.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.spring_boot_project.model.Comment;
-import pl.coderslab.spring_boot_project.model.HistoryDto;
+import pl.coderslab.spring_boot_project.dto.HistoryDto;
 import pl.coderslab.spring_boot_project.model.Image;
 import pl.coderslab.spring_boot_project.model.Review;
 

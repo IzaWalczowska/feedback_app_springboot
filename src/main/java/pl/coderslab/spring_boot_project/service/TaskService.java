@@ -4,12 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.spring_boot_project.model.Task;
-import pl.coderslab.spring_boot_project.model.TaskDto;
-import pl.coderslab.spring_boot_project.model.TaskStatus;
+import pl.coderslab.spring_boot_project.dto.TaskDto;
 import pl.coderslab.spring_boot_project.repository.TaskRepository;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
 
 
 import java.util.ArrayList;
