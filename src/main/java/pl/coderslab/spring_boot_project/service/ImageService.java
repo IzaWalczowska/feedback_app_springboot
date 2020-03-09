@@ -1,5 +1,6 @@
 package pl.coderslab.spring_boot_project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.spring_boot_project.model.Image;
@@ -15,6 +16,7 @@ public class ImageService {
 
     private ImageRepository imageRepository;
 
+    @Autowired
     public ImageService(ImageRepository imageRepository) {
         this.imageRepository = imageRepository;
     }
@@ -42,21 +44,6 @@ public class ImageService {
             return null;
         }
     }
-
-//    todo rozwiazac problem wyswietlania okladek projektow
-//    public List<Image> findLatestImageByProjectid(Long id) {
-//        return imageRepository.findLatestImagesByProjectid(id);
-//    }
-//
-//    public List<Image> findLatestImageByProjectList(List<Project> projectList) {
-//        List<Image> imageList= new ArrayList<>();
-//        for (Project project: projectList) {
-//            Long id = project.getId();
-//            imageList.add(imageRepository.findLatestImageByProjectid(id));
-//        }
-//        return imageList;
-//    }
-
 
 }
 

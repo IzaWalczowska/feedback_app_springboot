@@ -11,8 +11,8 @@ import java.util.List;
 
 @Entity
 @Table (name = "users")
-//@Getter
-//@Setter
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -22,6 +22,5 @@ public class User {
     private String surName;
     @ManyToMany(mappedBy = "users")
     private List<Project> projects;
-//    private Role role;
 
 }

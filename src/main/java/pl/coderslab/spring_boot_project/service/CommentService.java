@@ -1,5 +1,6 @@
 package pl.coderslab.spring_boot_project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.spring_boot_project.model.Comment;
@@ -13,6 +14,7 @@ public class CommentService {
 
     private final CommentRepository commentRepository;
 
+    @Autowired
     public CommentService(CommentRepository commentRepository) {
         this.commentRepository = commentRepository;
     }

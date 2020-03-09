@@ -28,12 +28,3 @@ public class Review {
     private Task task;
     private String content;
 }
-
-//    table reviews {
-//        id int [pk, increment]
-//        created date
-//        image_id int
-//        content varchar
-//        images_id int  [ref:> images.id]
-//
-//        }

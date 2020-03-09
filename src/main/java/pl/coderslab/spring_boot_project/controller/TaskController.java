@@ -86,17 +86,14 @@ public class TaskController {
                               @PathVariable("projectId") Long projectId,
                               @PathVariable("taskId") Long taskId, Model model) throws IOException {
 
-//      saves upleaded file and returns the path, to be written to the database
         String path = storageService.uploadFile(file);
 
-//      creates Image object, fills is's fields and saves to database
         Image image = new Image();
         image.setTask(taskService.findById(taskId));
         image.setProject(projectService.findById(projectId));
         image.setPath(path);
         imageService.save(image);
 
-//        update tasks status
         Task task = taskService.findById(taskId);
         String newStatus = TaskStatus.TO_REVIEW.name();
         task.setTaskStatus(newStatus);

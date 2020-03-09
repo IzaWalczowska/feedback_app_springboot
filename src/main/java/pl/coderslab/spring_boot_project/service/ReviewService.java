@@ -17,7 +17,6 @@ public class ReviewService {
 
     private final ReviewRepository reviewRepository;
 
-
     @Autowired
     public ReviewService(ReviewRepository reviewRepository) {
         this.reviewRepository = reviewRepository;

@@ -35,26 +35,10 @@ public class Task implements Comparable<Task>{
     private String name;
     @NotNull
     private String description;
-//    @Enumerated(EnumType.STRING)
-//    private TaskStatus taskStatus;
     @OneToMany (mappedBy = "task")
     private List<Image> images;
-//    @Column(columnDefinition = "varchar 16 default WAITING")
     private String taskStatus = TaskStatus.WAITING.name();
 
-
-//    public void setDatetimeString(String datetime) throws ParseException {
-//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-//        this.datetime =  (Date)formatter.parse(datetime);
-//    }
-//
-//    public String getDatetimeString() {
-//        if (datetime == null) {
-//            return null;
-//        }
-//        DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-//        return formatter.format(this.datetime);
-//    }
 
     @Override
     public int compareTo(Task task) {

@@ -1,5 +1,6 @@
 package pl.coderslab.spring_boot_project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.spring_boot_project.model.Comment;
@@ -21,6 +22,7 @@ public class DTOService {
     private final CommentService commentService;
     private final RequestService requestService;
 
+    @Autowired
     public DTOService(ImageService imageService, ReviewService reviewService, CommentService commentService, RequestService requestService) {
         this.imageService = imageService;
         this.reviewService = reviewService;

@@ -21,13 +21,4 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
     @Query(value = "select * from images where project_id=?1 order by created DESC limit 1", nativeQuery = true)
     List<Image> findLastImageInProject(Long taskId);
 
-
-
-//    @Query(value = "select * from images join tasks on images.task_id = tasks.id where project_id =?1 order by created desc limit 1", nativeQuery = true)
-//    List<Image> findLatestImagesByProjectid(Long id);
-//
-//    @Query(value = "select * from images join tasks on images.task_id = tasks.id where project_id =?1 order by created desc limit 1", nativeQuery = true)
-//    Image findLatestImageByProjectid(Long id);
-
-
 }

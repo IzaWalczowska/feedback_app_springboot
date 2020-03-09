@@ -13,5 +13,4 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     @Query(value = "select * from requests join reviews r on requests.review_id = r.id where task_id=?1", nativeQuery = true)
     List<Request> findAllRequestsInTask(Long taskId);
 
-
 }

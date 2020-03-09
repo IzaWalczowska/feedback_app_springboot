@@ -22,7 +22,7 @@ public class Comment {
     private String content;
     @ManyToOne
     private Task task;
-//    private Review review;
+
 
 
 }
